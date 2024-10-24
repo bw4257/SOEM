@@ -1,0 +1,32 @@
+BW's Notes for using SOEM
+
+Follow install, as in the root README.md
+
+mkdir SOEM/test/linux/bw
+copy CMakeLists.txt
+copy or make some myEtherCAT.c
+
+edit CMakeLists.txt to have the above .c file as the source
+
+ex. 
+
+set(SOURCES myEtherCAT.c)
+add_executable(myEtherCAT ${SOURCES})
+target_link_libraries(myEtherCAT soem)
+install(TARGETS myEtherCAT DESTINATION bin)
+
+edit
+/home/bwalter/Documents/SOEM/CMakeLists.txt
+
+near the end of the CMakeLists.txt file add the new test directory
+
+ex.
+    add_subdirectory(test/linux/bw)
+
+
+from the build directory run:
+
+cmake ..
+make
+
+this should build the new Ethercat file
